@@ -20,8 +20,13 @@ export class AuthService {
         return null;
     }
 
+    //Controla oque será traduzido do token enviado pelo Bearer
     async login(user: any) {
-        const payload = { username: user.username, sub: user.userId };
+        const payload = {
+            userId: user.userId,
+            name: user.name,
+            username: user.username,
+        };
         return {
             access_token: this.jwtService.sign(payload),
         };

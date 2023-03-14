@@ -23,7 +23,6 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         'prettier/prettier': [
             'error',
-            {},
             {
                 tab_width: 4,
                 endOfLine: 'auto',

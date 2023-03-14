@@ -1,3 +1,5 @@
+# Arquvo criado para entender o funconamento das requisições na API
+
 # Testar login
 $curl -X POST http://127.0.0.1:3333/auth/login -d '{"username": "Rafael", "password": "123123"}' -H "Content-Type: application/json"
 

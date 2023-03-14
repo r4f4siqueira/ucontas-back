@@ -13,7 +13,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         });
     }
 
+    //Retorna os dados traduzidos pelo jwt
     async validate(payload: any) {
-        return { userId: payload.sub, username: payload.username };
+        return {
+            userId: payload.userId,
+            username: payload.username,
+            name: payload.name,
+        };
     }
 }
