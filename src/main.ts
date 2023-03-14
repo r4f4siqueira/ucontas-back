@@ -19,6 +19,6 @@ async function bootstrap() {
         { Descricao: 'Base URL', url: 'http://127.0.0.1:3333/' },
         { Descricao: 'Test URL', url: 'http://127.0.0.1:3333/api' },
     ]);
-    console.log('\tCtrl + Click acess link');
+    console.log('\tCtrl + Click to access the link\n\n');
 }
 bootstrap();
