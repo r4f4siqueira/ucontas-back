@@ -17,7 +17,7 @@ import { UsersModule } from './users/users.module';
             password: 'admin',
             database: 'ucontas',
             autoLoadEntities: true,
-            synchronize: true, //TEMPORARIO - mudar para false caso usar em produção
+            synchronize: true, //NOTE - mudar para false caso usar em produção
         }),
     ],
     controllers: [AppController],

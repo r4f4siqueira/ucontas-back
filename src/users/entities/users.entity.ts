@@ -8,9 +8,12 @@ export class Users {
     @Column('text')
     name: string;
 
-    @Column('text')
+    @Column('text', { unique: true })
     username: string;
 
     @Column('text')
     password: string;
+
+    @Column('text', { nullable: true })
+    token: string;
 }

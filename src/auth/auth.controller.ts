@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import { Controller, Post, Request, UseGuards } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 
 @ApiTags('Rotas auth')
@@ -9,7 +8,7 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
 export class AuthController {
     constructor(private authService: AuthService) {}
 
-    // Desativado temporariamente
+    //NOTE - Desativado temporariamente
     // @UseGuards(LocalAuthGuard)
     // @Post('local')
     // async loginLocal(
@@ -25,6 +24,4 @@ export class AuthController {
     async loginJwt(@Request() req) {
         return this.authService.login(req.user);
     }
-
-    //TEMPORARIO - Mudar essa rota para user assim que possivel
 }

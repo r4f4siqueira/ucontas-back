@@ -10,8 +10,9 @@ export class AuthService {
     ) {}
 
     async validateUser(username: string, pass: string): Promise<any> {
-        console.log('Validando usuário localmente...');
         const user = await this.usersService.findOne(username);
+        console.log('Auth service');
+        console.log('User:', user);
 
         if (user && user.password === pass) {
             const { password, ...result } = user;
