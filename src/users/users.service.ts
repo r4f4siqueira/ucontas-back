@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Users } from './entities/users.entity';
 import { Repository } from 'typeorm';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -11,12 +12,13 @@ export class UsersService {
     ) {}
 
     findAll() {
-        return this.usersRepository.find();
+        return this.usersRepository.find({
+            //NOTE - Atributo select usado apenas para retornar os dados nescessários
+            select: ['userId', 'username', 'name'],
+        });
     }
 
     findOne(username: any) {
-        console.log(username);
-
         const user = this.usersRepository.findOne({ where: { username } });
 
         if (!user) {
@@ -26,7 +28,8 @@ export class UsersService {
         return user;
     }
 
-    save(createUserDto: any) {
-        return this.usersRepository.save(createUserDto);
+    save(createUserDto: CreateUserDto) {
+        this.usersRepository.save(createUserDto);
     }
 }
+//this.usersRepository.save(createUserDto);
