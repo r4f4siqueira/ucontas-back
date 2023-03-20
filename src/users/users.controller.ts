@@ -7,10 +7,12 @@ import {
     UseGuards,
     HttpException,
     HttpStatus,
+    Put,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
 
 @ApiTags('Rotas users')
@@ -43,5 +45,19 @@ export class UsersController {
     @Get('')
     getUsers() {
         return this.userService.findAll();
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Put('update')
+    updateUser(@Body() updateUserDto: UpdateUserDto) {
+        try {
+            this.userService.update(updateUserDto);
+            return { message: 'User atualizado' };
+        } catch (error) {
+            throw new HttpException(
+                'User NÃO atualizado',
+                HttpStatus.EXPECTATION_FAILED,
+            );
+        }
     }
 }
