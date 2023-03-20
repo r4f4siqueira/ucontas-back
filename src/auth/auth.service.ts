@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from 'src/users/users.service';
+import { LoginAuthDto } from './dto/login-auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -9,12 +10,12 @@ export class AuthService {
         private jwtService: JwtService,
     ) {}
 
-    async validateUser(username: string, pass: string): Promise<any> {
-        const user = await this.usersService.findOne(username);
-        console.log('Auth service');
-        console.log('User:', user);
+    async validateUser(userLogin: LoginAuthDto): Promise<any> {
+        const user = await this.usersService.findOne(userLogin.username);
+        // console.log('Auth service');
+        // console.log('User:', user);
 
-        if (user && user.password === pass) {
+        if (user && user.password === userLogin.password) {
             const { password, ...result } = user;
             return result;
         }
@@ -23,6 +24,8 @@ export class AuthService {
 
     //Controla oque será traduzido do token enviado pelo Bearer
     async login(user: any) {
+        // console.log('estou em login');
+        // console.log(user);
         const payload = {
             userId: user.userId,
             name: user.name,

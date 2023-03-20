@@ -1,7 +1,7 @@
-import { Controller, Post, Request, UseGuards } from '@nestjs/common';
+import { Controller, Post, Request } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
-import { LocalAuthGuard } from './guards/local-auth.guard';
+import { LoginAuthDto } from './dto/login-auth.dto';
 
 @ApiTags('Rotas auth')
 @Controller('auth')
@@ -19,9 +19,9 @@ export class AuthController {
     //     return req.user;
     // }
 
-    @UseGuards(LocalAuthGuard)
+    //@UseGuards(LocalAuthGuard)
     @Post()
-    async loginJwt(@Request() req) {
-        return this.authService.login(req.user);
+    async loginJwt(@Request() userLogin: LoginAuthDto) {
+        return this.authService.login(userLogin);
     }
 }
