@@ -7,4 +7,6 @@ export class UpdateUserDto {
     name: string;
     @ApiProperty()
     password: string;
+    @ApiProperty()
+    update: Date;
 }

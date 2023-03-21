@@ -16,4 +16,10 @@ export class Users {
 
     @Column('text', { nullable: true })
     token: string;
+
+    @Column({
+        type: 'timestamptz',
+        default: new Date().toLocaleString(),
+    })
+    update: Date;
 }

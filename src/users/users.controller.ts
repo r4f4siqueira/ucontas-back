@@ -33,10 +33,13 @@ export class UsersController {
         //NOTE - vai no banco verificar se o usuário já existe
         //Caso não tenha cria o usuário no banco e retorna o usuário sem a informação da senha
         const user = await this.userService.findOne(createUsers.username);
+
         if (!user) {
             this.userService.save(createUsers);
-            delete createUsers.password;
-            return createUsers;
+            return {
+                username: createUsers.username,
+                name: createUsers.name,
+            };
         }
         throw new HttpException('Usuário já cadastrado', HttpStatus.FORBIDDEN);
     }

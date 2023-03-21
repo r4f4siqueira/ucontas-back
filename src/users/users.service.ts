@@ -37,6 +37,7 @@ export class UsersService {
         this.usersRepository.update(updateUserDto.userId, {
             name: updateUserDto.name,
             password: updateUserDto.password,
+            update: new Date().toLocaleString(),
         });
     }
 }
