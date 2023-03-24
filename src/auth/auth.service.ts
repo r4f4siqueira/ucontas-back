@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from 'src/users/users.service';
 import { LoginAuthDto } from './dto/login-auth.dto';
@@ -23,16 +23,24 @@ export class AuthService {
     }
 
     //Controla oque será traduzido do token enviado pelo Bearer
-    async login(user: any) {
-        // console.log('estou em login');
-        // console.log(user);
-        const payload = {
-            userId: user.userId,
-            name: user.name,
-            username: user.username,
-        };
-        return {
-            access_token: this.jwtService.sign(payload),
-        };
+    async login(userLogin: LoginAuthDto) {
+        const user = await this.usersService.findOne(userLogin.username);
+
+        if (user && user.password === userLogin.password) {
+            const payload = {
+                userId: user.userId,
+                name: user.name,
+                username: user.username,
+            };
+
+            this.usersService.addToken({
+                id: user.userId,
+                token: this.jwtService.sign(payload),
+            });
+            return {
+                access_token: this.jwtService.sign(payload),
+            };
+        }
+        throw new NotFoundException('Usuario não encontrado');
     }
 }

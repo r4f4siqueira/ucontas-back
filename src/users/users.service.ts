@@ -4,6 +4,7 @@ import { Users } from './entities/users.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { AddTokenDto } from './dto/addToken-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -37,6 +38,18 @@ export class UsersService {
         this.usersRepository.update(updateUserDto.userId, {
             name: updateUserDto.name,
             password: updateUserDto.password,
+            update: new Date().toLocaleString(),
+        });
+    }
+
+    /**
+     *
+     * @param addToken objeto { `id` , `token` }
+     * @example { id: user.id , token: usertoken }
+     */
+    addToken(addToken: AddTokenDto) {
+        this.usersRepository.update(addToken.id, {
+            token: addToken.token,
             update: new Date().toLocaleString(),
         });
     }
