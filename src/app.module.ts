@@ -18,7 +18,7 @@ import { ContasModule } from './contas/contas.module';
             password: 'admin',
             database: 'ucontas',
             autoLoadEntities: true,
-            synchronize: false, //REVIEW - deixar false caso usar em produção para não correr o risco de perdar os dados
+            synchronize: true, //REVIEW - deixar false caso usar em produção para não correr o risco de perdar os dados
         }),
         ContasModule,
     ],
