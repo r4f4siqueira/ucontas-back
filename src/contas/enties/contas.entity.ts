@@ -1,5 +1,5 @@
 import { Users } from 'src/users/entities/users.entity';
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 
 @Entity('contas')
 export class Contas {
@@ -18,7 +18,7 @@ export class Contas {
     })
     update: Date;
 
-    @OneToOne(() => Users)
+    @ManyToOne(() => Users, (user) => user.userId)
     @Column('int')
     user: number;
 }

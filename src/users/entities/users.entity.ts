@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Contas } from 'src/contas/enties/contas.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 @Entity('users')
 export class Users {
@@ -22,4 +23,7 @@ export class Users {
         default: new Date().toLocaleString(),
     })
     update: Date;
+
+    @OneToMany(() => Contas, (conta) => conta.user)
+    contas: Contas[];
 }
