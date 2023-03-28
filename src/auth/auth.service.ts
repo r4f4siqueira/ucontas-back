@@ -16,7 +16,7 @@ export class AuthService {
         // console.log('User:', user);
 
         if (user && user.password === userLogin.password) {
-            const { password, ...result } = user;
+            const { ...result } = user;
             return result;
         }
         return null;

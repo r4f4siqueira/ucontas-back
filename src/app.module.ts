@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { ContasModule } from './contas/contas.module';
 
 @Module({
     imports: [
@@ -17,8 +18,9 @@ import { UsersModule } from './users/users.module';
             password: 'admin',
             database: 'ucontas',
             autoLoadEntities: true,
-            synchronize: true, //NOTE - mudar para false caso usar em produção
+            synchronize: true, //REVIEW - deixar false caso usar em produção para não correr o risco de perdar os dados
         }),
+        ContasModule,
     ],
     controllers: [AppController],
     providers: [AppService],
