@@ -5,11 +5,10 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ContasModule } from './contas/contas.module';
+import { TagsModule } from './tags/tags.module';
 
 @Module({
     imports: [
-        AuthModule,
-        UsersModule,
         TypeOrmModule.forRoot({
             type: 'postgres',
             host: 'localhost',
@@ -20,7 +19,10 @@ import { ContasModule } from './contas/contas.module';
             autoLoadEntities: true,
             synchronize: true, //REVIEW - deixar false caso usar em produção para não correr o risco de perdar os dados
         }),
+        AuthModule,
+        UsersModule,
         ContasModule,
+        TagsModule,
     ],
     controllers: [AppController],
     providers: [AppService],
