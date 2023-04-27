@@ -6,9 +6,9 @@ import { ContasService } from './contas.service';
 import { Contas } from './enties/contas.entity';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Contas])],
-    controllers: [ContasController],
-    providers: [ContasService, JwtAuthGuard],
-    exports: [ContasService],
+  imports: [TypeOrmModule.forFeature([Contas])],
+  controllers: [ContasController],
+  providers: [ContasService, JwtAuthGuard],
+  exports: [ContasService],
 })
 export class ContasModule {}

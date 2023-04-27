@@ -5,42 +5,42 @@ import { LoginAuthDto } from './dto/login-auth.dto';
 
 @Injectable()
 export class AuthService {
-    constructor(
-        private usersService: UsersService,
-        private jwtService: JwtService,
-    ) {}
+  constructor(
+    private usersService: UsersService,
+    private jwtService: JwtService,
+  ) {}
 
-    async validateUser(userLogin: LoginAuthDto): Promise<any> {
-        const user = await this.usersService.findOne(userLogin.username);
-        // console.log('Auth service');
-        // console.log('User:', user);
+  async validateUser(userLogin: LoginAuthDto): Promise<any> {
+    const user = await this.usersService.findOne(userLogin.username);
+    // console.log('Auth service');
+    // console.log('User:', user);
 
-        if (user && user.password === userLogin.password) {
-            const { ...result } = user;
-            return result;
-        }
-        return null;
+    if (user && user.password === userLogin.password) {
+      const { ...result } = user;
+      return result;
     }
+    return null;
+  }
 
-    //Controla oque será traduzido do token enviado pelo Bearer
-    async login(userLogin: LoginAuthDto) {
-        const user = await this.usersService.findOne(userLogin.username);
+  //Controla oque será traduzido do token enviado pelo Bearer
+  async login(userLogin: LoginAuthDto) {
+    const user = await this.usersService.findOne(userLogin.username);
 
-        if (user && user.password === userLogin.password) {
-            const payload = {
-                userId: user.userId,
-                name: user.name,
-                username: user.username,
-            };
+    if (user && user.password === userLogin.password) {
+      const payload = {
+        userId: user.userId,
+        name: user.name,
+        username: user.username,
+      };
 
-            this.usersService.addToken({
-                id: user.userId,
-                token: this.jwtService.sign(payload),
-            });
-            return {
-                access_token: this.jwtService.sign(payload),
-            };
-        }
-        throw new NotFoundException('Usuario não encontrado');
+      this.usersService.addToken({
+        id: user.userId,
+        token: this.jwtService.sign(payload),
+      });
+      return {
+        access_token: this.jwtService.sign(payload),
+      };
     }
+    throw new NotFoundException('Usuario não encontrado');
+  }
 }
