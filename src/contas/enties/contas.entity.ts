@@ -3,22 +3,22 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 
 @Entity('contas')
 export class Contas {
-    @PrimaryGeneratedColumn()
-    contaId: number;
+  @PrimaryGeneratedColumn()
+  contaId: number;
 
-    @Column('text')
-    name: string;
+  @Column('text')
+  name: string;
 
-    @Column('money')
-    balance: number;
+  @Column('money')
+  balance: number;
 
-    @Column({
-        type: 'timestamptz',
-        default: new Date().toLocaleString(),
-    })
-    update: Date;
+  @Column({
+    type: 'timestamptz',
+    default: new Date().toLocaleString(),
+  })
+  update: Date;
 
-    @ManyToOne(() => Users, (user) => user.userId)
-    @Column('int')
-    user: number;
+  @ManyToOne(() => Users, (user) => user.userId)
+  @Column('int')
+  user: number;
 }

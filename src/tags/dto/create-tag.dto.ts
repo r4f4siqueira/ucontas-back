@@ -1,4 +1,4 @@
 export class CreateTagDto {
-    descricao: string;
-    type: string;
+  descricao: string;
+  type: string;
 }
