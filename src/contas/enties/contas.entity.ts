@@ -19,6 +19,5 @@ export class Contas {
   update: Date;
 
   @ManyToOne(() => Users, (user) => user.userId)
-  @Column('int')
-  user: number;
+  user: Users;
 }
