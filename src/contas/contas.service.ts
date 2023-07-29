@@ -29,7 +29,7 @@ export class ContasService {
         update: new Date().toLocaleString(),
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -37,7 +37,7 @@ export class ContasService {
     try {
       return await this.contasRepository.delete(deleteConta.contaId);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 }

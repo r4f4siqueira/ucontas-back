@@ -28,10 +28,10 @@ export class TagsService {
     try {
       return await this.tagsRepository.update(id, {
         descricao: updateTagDto.descricao,
-        type: updateTagDto.type,
+        receita: updateTagDto.receita,
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
@@ -39,7 +39,7 @@ export class TagsService {
     try {
       return await this.tagsRepository.delete(id);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 }

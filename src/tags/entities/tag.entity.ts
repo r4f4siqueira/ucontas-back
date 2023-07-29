@@ -5,11 +5,11 @@ export class Tag {
   @PrimaryGeneratedColumn()
   tagId: number;
 
-  @Column('text')
+  @Column({ type: 'text', nullable: false })
   descricao: string;
 
-  @Column('character')
-  type: string;
+  @Column({ type: 'boolean', nullable: false })
+  receita: boolean;
 
   @Column({
     type: 'timestamptz',
