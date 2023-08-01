@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { ContasModule } from './contas/contas.module';
 import { TagsModule } from './tags/tags.module';
+import { LancamentosModule } from './lancamentos/lancamentos.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { TagsModule } from './tags/tags.module';
     UsersModule,
     ContasModule,
     TagsModule,
+    LancamentosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
