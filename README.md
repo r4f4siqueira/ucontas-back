@@ -11,10 +11,10 @@
 
 | Name                                                                                             | Version   | Documentation                        |
 | ------------------------------------------------------------------------------------------------ | --------- | ------------------------------------ |
-| node.js                                                                                          | 18.14.2 ^ | https://nodejs.org/en/docs/          |
-| nest.js                                                                                          | 9.0.0^    | https://docs.nestjs.com/             |
-| nest[CLI](https://www.google.com/search?q=Command+Line+Interface 'Command Line Interface (CLI)') | 9.2.0     | https://docs.nestjs.com/cli/overview |
-| TypeORM                                                                                          | 0.3.12    | https://typeorm.io/                  |
+| node.js                                                                                          | 20.9.0 ^ | https://nodejs.org/en/docs/          |
+| nest.js                                                                                          | 10.0.0^    | https://docs.nestjs.com/             |
+| nest[CLI](https://www.google.com/search?q=Command+Line+Interface 'Command Line Interface (CLI)') | 10.2.1     | https://docs.nestjs.com/cli/overview |
+| TypeORM                                                                                          | 0.3.17    | https://typeorm.io/                  |
 
 ## Description
 
